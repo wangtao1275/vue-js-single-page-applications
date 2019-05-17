@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-const AppCategory = () => import('./components/AppCategory')
-const AppLogin = () => import('./components/AppLogin')
-const NotFound = () => import('./components/NotFound')
+const AppCategory = () => import('../components/AppCategory')
+const AppLogin = () => import('../components/AppLogin')
+const NotFound = () => import('../components/NotFound')
 
 Vue.use(VueRouter)
 

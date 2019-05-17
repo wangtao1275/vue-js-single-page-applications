@@ -56,44 +56,28 @@
 
 <script>
 import mainService from '../main.service';
+import { mapGetters, mapActions } from 'vuex';
   export default {
     data() {
       return {
         username: '',
-        password: '',
-        isAuthenticated: false,
-        profile: {}
+        password: '',        
       }
     },
-    watch: {
-      isAuthenticated: function (val) {
-        if(val){
-          mainService.getProfile().then(profile => {
-            this.profile = profile
-          })
-        }else {
-          this.profile = {}
-        }
-      }
+    computed: {
+      ...mapGetters(['isAuthenticated'])
     },
     methods: {
+      ...mapActions({logout: 'logout'}),
+      
       login() {
-        mainService.login({username: this.username, password: this.password})
-          .then(data => {
-            window.localStorage.setItem('token', data.token)
-            window.localStorage.setItem('tokenExpiration', data.expiration)
-            this.isAuthenticated = true
-            this.username = ''
-            this.password = ''
-
-          }).catch(() => window.alert('Could not login!'))
+        this.$store.dispatch('login', {username: this.username, password: this.password})
+            .then(() =>{
+              this.username = ''
+              this.password = ''
+            })
       },
 
-      logout(){
-        window.localStorage.setItem('token', null)
-        window.localStorage.setItem('tokenExpiration', null)
-        this.isAuthenticated = false
-      }
     },
 
     created () {
