@@ -10,31 +10,31 @@
 </template>
 
 <script>
-import AppPost from './AppPost.vue';
+import AppPost from './AppPost.vue'
 import { mapGetters } from 'vuex'
-  export default {
-    components: {
-      'app-post': AppPost
-    },
-    computed: {
-      ...mapGetters('postsModule', ['posts'])
-    },
-    methods: {
-      loadPosts() {
-        let categoryId = 2
-        if(this.$route.params.id === 'mobile'){
-          categoryId = 11
-        }
-        this.$store.dispatch('postsModule/updateCategory', categoryId)
+export default {
+  components: {
+    'app-post': AppPost
+  },
+  computed: {
+    ...mapGetters('postsModule', ['posts'])
+  },
+  methods: {
+    loadPosts () {
+      let categoryId = 2
+      if (this.$route.params.id === 'mobile') {
+        categoryId = 11
       }
-    },
-    watch: {
-      '$route' (to, from){        
-        this.loadPosts()
-      }
-    },
-    created () {
-      this.loadPosts()      
-    },
+      this.$store.dispatch('postsModule/updateCategory', categoryId)
+    }
+  },
+  watch: {
+    '$route' () {
+      this.loadPosts()
+    }
+  },
+  created () {
+    this.loadPosts()
   }
+}
 </script>

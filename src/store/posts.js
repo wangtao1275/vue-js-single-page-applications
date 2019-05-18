@@ -1,5 +1,4 @@
-import mainService from "../main.service";
-
+import mainService from '../main.service'
 
 const state = {
   posts: [],
@@ -11,14 +10,14 @@ const getters = {
 }
 
 const mutations = {
-  updateCategory(state, category){
+  updateCategory (state, category) {
     state.categoryId = category.categoryId
     state.posts = category.posts
   }
 }
 
 const actions = {
-  updateCategory(context, categoryId) {
+  updateCategory (context, categoryId) {
     mainService.getPost(categoryId).then(data => {
       context.commit('updateCategory', { categoryId, posts: data})
     })
@@ -30,6 +29,5 @@ export default {
   state,
   getters,
   mutations,
-  actions,
+  actions
 }
-

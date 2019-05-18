@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import AppHeader from './components/AppHeader'
-import AppFooter from './components/AppFooter'
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
 
 export default {
   name: 'app',
@@ -24,8 +24,8 @@ export default {
 </script>
 
 <style lang="scss">
-  $primary: #287ab1;
-  @import '~bulma';
+  // $primary: #287ab1;
+  // @import '~bulma';
 
   .columns{
     flex-wrap: wrap

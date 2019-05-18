@@ -55,38 +55,38 @@
 </template>
 
 <script>
-import mainService from '../main.service';
-import { mapGetters, mapActions } from 'vuex';
-  export default {
-    data() {
-      return {
-        username: '',
-        password: '',        
-      }
-    },
-    computed: {
-      ...mapGetters(['isAuthenticated'])
-    },
-    methods: {
-      ...mapActions({logout: 'logout'}),
-      
-      login() {
-        this.$store.dispatch('login', {username: this.username, password: this.password})
-            .then(() =>{
-              this.username = ''
-              this.password = ''
-            })
-      },
 
-    },
+import { mapGetters, mapActions } from 'vuex'
+export default {
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
+  methods: {
+    ...mapActions({logout: 'logout'}),
 
-    created () {
-      let expiration = window.localStorage.getItem('tokenExpiration')
-      let unixTimestamp = new Date().getTime() / 1000
-      if(expiration !== null && parseInt(expiration) -unixTimestamp > 0){
-        this.isAuthenticated = true
-      }
-    },
+    login () {
+      this.$store.dispatch('login', {username: this.username, password: this.password})
+        .then(() => {
+          this.username = ''
+          this.password = ''
+        })
+    }
+
+  },
+
+  created () {
+    let expiration = window.localStorage.getItem('tokenExpiration')
+    let unixTimestamp = new Date().getTime() / 1000
+    if (expiration !== null && parseInt(expiration) - unixTimestamp > 0) {
+      this.isAuthenticated = true
+    }
   }
+}
 </script>
 
