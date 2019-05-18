@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const base = require('./webpack.base.config')
 const nodeExternals = require('webpack-node-externals')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')

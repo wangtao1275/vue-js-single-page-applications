@@ -17,7 +17,7 @@ const config = {
         loader: 'vue-loader',
         options: {
           css: 'css-loader',
-          'scss': 'css-loader | sass-loader'
+          'scss': 'css-loader|sass-loader'
         }
       },
       {
@@ -27,13 +27,11 @@ const config = {
       }
     ]
   },
-
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     filename: 'assets/js/[name].js'
   }
-
 }
 
 module.exports = config
